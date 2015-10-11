@@ -34,12 +34,46 @@ These are the steps done in order to configure the server
         # Add this line and save the file
         grader ALL=(ALL) NOPASSWD:ALL
 4. Logout and loging as the grader user
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 5. Update all currently installed packages
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 6. Change the SSH port from 22 to 2200
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 8. Configure the local timezone to UTC
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 9. Install and configure Apache to serve a Python mod_wsgi application
-10. Install PostgreSQL: 
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
+10. Install PostgreSQL:
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 11. Create a catalog user and databse named catalog
+
+        sudo apt-get install git
 12. Install Git
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 13. Clone and configure the app
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 
