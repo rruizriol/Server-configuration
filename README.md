@@ -43,13 +43,14 @@ These are the steps done in order to configure the server
 
         sudo apt-get update
         sudo apt-get upgrade
-6. Change the SSH port from 22 to 2200
+6. Change the SSH port from 22 to 2200 and dsable the remote root login
 
         # Set this in /etc/ssh/sshd_config
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bck
         sudo nano /etc/ssh/sshd_config
-        # Modify this line and save the file
+        # Modify these line and save the file
         Port 2200
+        PermitRootLogin no
         
         # Restart the service
         sudo service ssh restart
