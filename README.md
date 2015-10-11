@@ -20,9 +20,7 @@ These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        sudo adduser grader
 2. Give the grader the permission to sudo
 
         sudo nano /etc/sudoers.d/grader
@@ -30,47 +28,100 @@ These are the steps done in order to configure the server
         grader ALL=(ALL) NOPASSWD:ALL
 3. Copy authorized keys to new user and set privileges
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        cd /home/grader
+        mkdir .ssh
+        cp /root/.ssh/authorized_keys /home/grader/.ssh/
+        chmod 700 .ssh
+        chmod 644 .ssh/authorized_keys
+        chown -R grader .ssh
+        chgrp -R grader .ssh
 4. Logout and loging as the grader user
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        logout
+        ssh -p 22 -i "./ssh/udacity_key.rsa" grader@54.148.43.195
 5. Update all currently installed packages
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        sudo apt-get update
+        sudo apt-get upgrade
 6. Change the SSH port from 22 to 2200
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        # Set this in /etc/ssh/sshd_config
+        sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bck
+        sudo nano /etc/ssh/sshd_config
+        # Modify this line and save the file
+        Port 2200
+        
+        # Restart the service
+        sudo service ssh restart
+        
+        # Add the host ip to /etc/hosts in ordet to avoid the message
+        # sudo: unable to resolve host ip-10-20-8-135
+        sudo nano /etc/hosts
+        127.0.1.1 ip-10-20-8-135
+        
+        # Run the update package again to see if the error persists
+        sudo apt-get update
+        sudo apt-get upgrade
+        
+        # Logout acon connect again using the new ssh port
+        logout
+        ssh -p 2200 -i "./ssh/udacity_key.rsa" grader@54.148.43.195
+7. Configure the Uncomplicated Firewall (UFW) to only allow incoming connections 
+   for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+
+        sudo ufw status
+        sudo ufw default deny incoming
+        sudo ufw default allow outgoing
+        sudo ufw allow www
+        sudo ufw allow ntp
+        sudo ufw allow 2200/tcp
+        
+        # Start the firewall
+        sudo ufw enable
+        
+        # Check the firewall status
+        sudo ufw status 
+        
+        # Logout again to test the firewall
+        logout
+        ssh -p 2200 -i "./ssh/udacity_key.rsa" grader@54.148.43.195
 8. Configure the local timezone to UTC
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        date
+        # the command dispay the date in utc. Nothing to do
 9. Install and configure Apache to serve a Python mod_wsgi application
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        sudo apt-get install apache2
+        sudo apt-get install libapache2-mod-wsgi
+        
+        #Set the server name in /etc/apache2/apache2.conf in order to suppress this message
+        
+        "apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. 
+        Set the 'ServerName' directive globally to suppress this message" 
+        
+        nano  /etc/apache2/apache2.conf
+        ServerName localhost
+        .
+        # Restart apache
+        sudo apache2ctl restart
 10. Install PostgreSQL:
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        sudo apt-get install postgresql
 11. Create a catalog user and databse named catalog
 
-        sudo apt-get install git
+        sudo su - postgres
+        psql
+        
+        # run the following commands
+        CREATE USER catalog WITH PASSWORD 'itemcatalogapp';
+        CREATE DATABASE catalog;
+        GRANT ALL PRIVILEGES ON DATABASE "catalog" to catalog;
+        \q
+        
+        exit
 12. Install Git
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        sudo apt-get install git
 13. Install and configure the ***catalog*** application
 
         # Clone the app
