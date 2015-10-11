@@ -20,7 +20,9 @@ These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
 
-	sudo adduser grader
+	sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 2. Give the grader the permission to sudo
 
         sudo nano /etc/sudoers.d/grader
