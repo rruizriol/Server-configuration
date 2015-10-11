@@ -22,6 +22,10 @@ These are the steps done in order to configure the server
 
 		sudo adduser grader
 2. Give the grader the permission to sudo
+
+                sudo nano /etc/sudoers.d/grader
+                # Add this line and save the file
+                grader ALL=(ALL) NOPASSWD:ALL
 3. Copy authorized keys to new user and set privileges
 4. Logout and loging as the grader user
 5. Update all currently installed packages
