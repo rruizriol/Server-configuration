@@ -10,8 +10,8 @@ In thi project we have to take a baseline installation of a Linux distribution o
 
 **IP address**: 54.148.43.195
 
-**SSH Connection**: ssh -p 22 -i "./ssh/udacity_key.rsa" grader@54.148.43.195
+**SSH Connection**: *ssh -p 22 -i "./ssh/udacity_key.rsa" grader@54.148.43.195*
 
-*Web URL*: http://54.148.43.195/
+**Web URL**: http://54.148.43.195/
 
 ## Steps
