@@ -19,6 +19,7 @@ In thi project we have to take a baseline installation of a Linux distribution o
 These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
+   '''sudo adduser grader'''
 2. Give the grader the permission to sudo
 3. Copy authorized keys to new user and set privileges
 4. Logout and loging as the grader user
