@@ -19,4 +19,15 @@ In thi project we have to take a baseline installation of a Linux distribution o
 These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
-    sudo adduser grader
+2. Give the grader the permission to sudo
+3. Copy authorized keys to new user and set privileges
+4. Logout and loging as the grader user
+5. Update all currently installed packages
+6. Change the SSH port from 22 to 2200
+8. Configure the local timezone to UTC
+9. Install and configure Apache to serve a Python mod_wsgi application
+10. Install PostgreSQL: 
+11. Create a catalog user and databse named catalog
+12. Install Git
+13. Clone and configure the app
+
