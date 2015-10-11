@@ -20,7 +20,7 @@ These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
 
-		root:~$ echo "grader ALL=(ALL) ALL" > /etc/sudoers.d/grader
+		sudo adduser grader
 2. Give the grader the permission to sudo
 3. Copy authorized keys to new user and set privileges
 4. Logout and loging as the grader user
