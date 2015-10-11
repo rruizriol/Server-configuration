@@ -20,7 +20,7 @@ These are the steps done in order to configure the server
 
 1. Create a new user named ***grader***
 
-	sudo nano /etc/sudoers.d/grader
+        sudo nano /etc/sudoers.d/grader
         # Add this line and save the file
         grader ALL=(ALL) NOPASSWD:ALL
 2. Give the grader the permission to sudo
@@ -29,6 +29,10 @@ These are the steps done in order to configure the server
         # Add this line and save the file
         grader ALL=(ALL) NOPASSWD:ALL
 3. Copy authorized keys to new user and set privileges
+
+        sudo nano /etc/sudoers.d/grader
+        # Add this line and save the file
+        grader ALL=(ALL) NOPASSWD:ALL
 4. Logout and loging as the grader user
 5. Update all currently installed packages
 6. Change the SSH port from 22 to 2200
