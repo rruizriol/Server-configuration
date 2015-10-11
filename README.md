@@ -15,3 +15,9 @@ In thi project we have to take a baseline installation of a Linux distribution o
 **Web URL**: http://54.148.43.195/
 
 ## Configuration Steps
+
+These are the steps done in order to configure the server
+
+1. **Create a new user named grader**
+
+  sudo adduser grader
