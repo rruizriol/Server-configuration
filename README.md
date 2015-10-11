@@ -71,9 +71,52 @@ These are the steps done in order to configure the server
         sudo nano /etc/sudoers.d/grader
         # Add this line and save the file
         grader ALL=(ALL) NOPASSWD:ALL
-13. Clone and configure the app
+13. Install and configure the ***catalog*** application
 
-        sudo nano /etc/sudoers.d/grader
-        # Add this line and save the file
-        grader ALL=(ALL) NOPASSWD:ALL
+        # Clone the app
+        cd /var/www
+        sudo git clone "https://github.com/rruizriol/item-catalog.git"
+        sudo mv item-catalog/AppCode item-catalog/appcode
+        sudo mv item-catalog catalog
+        
+        # Install python package
+        sudo apt-get install python-psycopg2
+        sudo apt-get install python-flask
+        sudo apt-get install python-sqlalchemy
+        sudo apt-get install python-pip
+        sudo pip install oauth2client
+        sudo pip install requests
+        sudo pip install httplib2
+        sudo pip install dicttoxml
+        
+        # Modify in the following python files the databse connection to use postgresql
+        # engine = create_engine('postgresql://catalog:itemcatalogapp@localhost/catalog')
+        cd /var/www/catalog/appcode
+        sudo nano database_setup.py
+        sudo nano db_helper.py
+        sudo nano some_items.py
+        
+        #Configure the database and add some items
+        sudo python /var/www/catalog/appcode/database_setup.py
+        sudo python /var/www/catalog/appcode/some_items.py
+        
+        # Adding the server ip 54.148.43.195 to the to Authorized JavaScript Origins to the catalog application
+        # in Google Developer Console
+        # Download the new Json file and add the new content to the client_secrets.json inside  /var/www/catalog/appcode
+        sudo nano /var/www/catalog/appcode/client_secrets.json
+        
+        # Adding the ip http://54.148.43.195 to the "Valid OAuth redirect URIs" 
+        # in the Advanced settins for the catalog application in Facebook
+        
+        # Create the wsgi file to handle the application
+        sudo nano /var/www/catalog/appcode/catalog.wsgi
+        
+        # Create a catalog user
+        sudo adduser catalog
+        
+        # Add to the site configuration to apache /etc/apache2/sites-available/000-default.conf
+        sudo nano /etc/apache2/sites-available/000-default.conf
+        
+        # Restart the apache
+        sudo apache2ctl restart
 
