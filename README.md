@@ -14,4 +14,4 @@ In thi project we have to take a baseline installation of a Linux distribution o
 
 **Web URL**: http://54.148.43.195/
 
-## Steps
+## Configuration Steps
