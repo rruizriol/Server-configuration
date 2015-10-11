@@ -100,9 +100,10 @@ These are the steps done in order to configure the server
         sudo python /var/www/catalog/appcode/database_setup.py
         sudo python /var/www/catalog/appcode/some_items.py
         
-        # Adding the server ip 54.148.43.195 to the to Authorized JavaScript Origins to the catalog application
-        # in Google Developer Console
-        # Download the new Json file and add the new content to the client_secrets.json inside  /var/www/catalog/appcode
+        # Adding the server ip 54.148.43.195 to the to Authorized JavaScript Origins 
+        # to the catalog application in Google Developer Console
+        # Download the new Json file and add the new content to the  
+        # client_secrets.json inside  /var/www/catalog/appcode
         sudo nano /var/www/catalog/appcode/client_secrets.json
         
         # Adding the ip http://54.148.43.195 to the "Valid OAuth redirect URIs" 
