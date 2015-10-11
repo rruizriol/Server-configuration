@@ -171,4 +171,10 @@ These are the steps done in order to configure the server
         
         # Restart the apache
         sudo apache2ctl restart
+14. Restrict access to .git folder
+
+        cd /var/www/catalog
+        sudo nano .htaccess
+        RedirectMatch 404 /\.git        
+        
 
